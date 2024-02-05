@@ -1,3 +1,1 @@
-print("hdhhd")
-print("hdsbs")
-print("dfbsd")
+print("ура у меня получилось!")

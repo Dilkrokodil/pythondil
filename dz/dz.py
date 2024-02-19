@@ -1,13 +1,25 @@
-students = {}
-a = 0
-Kolvo_stud = int(input("Количество студентов: "))
-for i in range(1, Kolvo_stud + 1):
-    stud = input(str(i) + "-й студент: ")
-    ball = int(input("Балл: "))
-    students[stud] = ball
-    a += ball
-sredball = a/Kolvo_stud
-print(sredball)
-for i in students:
-    if students[i] > sredball:
-        print("Студенты с баллом выше среднего:", i)
+# def plosh(a, b, c):
+#
+#     def inner():
+#         s = 2*(a*b + b*c + a*c)
+#         print(s)
+#     return inner()
+#
+#
+# plosh(2, 4, 6)
+
+
+
+s = 1
+
+
+def plosh(a, b, c):
+    def inner():
+        global s
+        s = 2 * (a * b + b * c + a * c)
+        print(s)
+
+    return inner()
+
+
+plosh(2, 4, 6)

@@ -26,22 +26,25 @@
 
 
 
-def decor(fn):
+# def decor(fn):
+#
+#     def wrap(*arg):
+#         print("Среднее арифметическое:",  fn(*arg) / len(arg))
+#     return wrap
+#
+#
+# @decor
+# def func(*args):
+#     print("Сумма чисел: ", args, "=", sum(args))
+#     return sum(args)
+#
+#
+# func(1, 2, 3, 4)
 
-    def wrap(*arg):
-        print("Среднее арифметическое:",  fn(*arg) / len(arg))
-    return wrap
-
-
-@decor
-def func(*args):
-    print("Сумма чисел: ", args, "=", sum(args))
-    return sum(args)
-
-
-func(1, 2, 3, 4)
-
-
+name = input("Введите ФИО: ")
+one = name[:name.find(" ")]
+a = name.split()
+print(one + " " + a[1][0] + "." + a[2][0] + ".")
 
 
 

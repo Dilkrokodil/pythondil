@@ -41,11 +41,14 @@
 #
 # func(1, 2, 3, 4)
 
-name = input("Введите ФИО: ")
-one = name[:name.find(" ")]
-a = name.split()
-print(one + " " + a[1][0] + "." + a[2][0] + ".")
+# name = input("Введите ФИО: ")
+# one = name[:name.find(" ")]
+# a = name.split()
+# print(one + " " + a[1][0] + "." + a[2][0] + ".")
 
 
-
+import re
+nomer = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564578"
+reg = r"[+7?]\d{10}"
+print(re.findall(reg, nomer))
 

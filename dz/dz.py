@@ -47,8 +47,27 @@
 # print(one + " " + a[1][0] + "." + a[2][0] + ".")
 
 
+# import re
+# nomer = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564578"
+# reg = r"[+7?]\d{10}"
+# print(re.findall(reg, nomer))
+
+
 import re
-nomer = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564578"
-reg = r"[+7?]\d{10}"
-print(re.findall(reg, nomer))
+s = input("Введите пароль: ")
+reg = r"([a-zA-Z0-9_@-]{6,18}+)"
+print(re.findall(reg, s))
+
+
+
+
+
+
+
+
+
+
+
+
+
 

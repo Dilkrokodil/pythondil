@@ -75,17 +75,17 @@
 
 s = [-2, 3, 8, -11, -4, 6]
 
-
-def sum(chisla):
-    if not chisla:
-        return 0
-    count = 0
-    if chisla[0] < 0:
-            count += 1
-    return sum(chisla[1:]) + count
-
-
-print(sum(s))
+#
+# def sum(chisla):
+#     if not chisla:
+#         return 0
+#     count = 0
+#     if chisla[0] < 0:
+#             count += 1
+#     return sum(chisla[1:]) + count
+#
+#
+# print(sum(s))
 
 
 # import os

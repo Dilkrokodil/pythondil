@@ -2121,17 +2121,17 @@ import os.path
 # Work\F2\F21\f212.txt
 
 
-#
+# #
 # root = r'nested1'
 # objs = os.listdir(root)
 # print(objs)
 # # print(sorted(objs, reverse=True))
 # objs = list(map(lambda i: os.path.join(root, i), objs))
 # print(objs)
-
+#
 # obj_sort = sorted(objs, key=os.path.isfile, reverse=True)
 # print(obj_sort)
-#
+
 
 # print(os.path.isfile(r"nested1\nested2\res.txt"))  # возвращает True, если путь является файлом
 # print(os.path.isdir(r"nested1\nested2"))  # возвращает True, если путь является директорией
@@ -2269,38 +2269,47 @@ import os.path
 # print(h1.get_birthday())
 # h1.print_info()
 
-class Person:
-    skill = 10  # статическое
-    count = 0  # 2
+# class Person:
+#     skill = 10  # статическое
+#     count = 0  # 2
+#
+#     def __init__(self, name, surname):  # Инициализатор
+#         self.name = name  # динамическое
+#         self.surname = surname
+#         print("Инициализатор")
+#         Person.count += 1
+#
+#     def __del__(self):  # финализатор (деструктор)
+#         print("Удаление экземпляра:", self.__class__.__name__)
+#
+#     def print_info(self):
+#         print("Данные сотрудника:", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника:", self.skill, end="\n\n")
+#
+#
+# p1 = Person("Виктор", "Резник")
+# p1.print_info()
+# p1.add_skill(3)
+# # del p1
+# # p1 = 5
+#
+# p2 = Person("Анна", "Долгих")
+# p2.print_info()
+# p2.add_skill(2)
+#
+# p3 = Person("Анна", "Долгих")
+# print(p1.count)
+# print(p2.count)
+# print(Person.count)
 
-    def __init__(self, name, surname):  # Инициализатор
-        self.name = name  # динамическое
-        self.surname = surname
-        print("Инициализатор")
-        Person.count += 1
-
-    def __del__(self):  # финализатор (деструктор)
-        print("Удаление экземпляра:", self.__class__.__name__)
-
-    def print_info(self):
-        print("Данные сотрудника:", self.name, self.surname)
-
-    def add_skill(self, k):
-        self.skill += k
-        print("Квалификация сотрудника:", self.skill, end="\n\n")
 
 
-p1 = Person("Виктор", "Резник")
-p1.print_info()
-p1.add_skill(3)
-# del p1
-# p1 = 5
+import os
 
-p2 = Person("Анна", "Долгих")
-p2.print_info()
-p2.add_skill(2)
-
-p3 = Person("Анна", "Долгих")
-print(p1.count)
-print(p2.count)
-print(Person.count)
+root = r'nested1'
+objs = os.listdir(root)
+print(objs)
+print(sorted(objs, reverse=True))

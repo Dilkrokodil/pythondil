@@ -1765,7 +1765,542 @@ import re
 #
 # print(to_str(254, 10))  # to_str(254, 16) => FE
 
+import re
+# s = input("Введите пароль: ")
+# reg = r"([a-zA-Z0-9_@-]{6,18}+)"
+# print(re.findall(reg, s))
+
+
+# names = ["Adam", ["Bob", ["Chet", "Cat", ["1", ["2", ["3"]]]], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+
+
+# print(names[0])
+# print(isinstance(names[0], list))
+# # print(names[1])
+# # print(isinstance(names[1], list))
+# # print(names[1][1])
+# # print(isinstance(names[1][1], list))
+# def count_items(item_list):
+#     count = 0  # 10
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)  # count += 2
+#         else:
+#             count += 1
+#     return count
+#
+#
+# print(count_items(names))
+
+
+
+# def remove(text):  # ""
+#     if not text:  # text = ""
+#         return ""
+#     if text[0] == "\n" or text[0] == " ":
+#         return remove(text[1:])  # ""
+#     else:
+#         return text[0] + remove(text[1:])  # "HelloWorld" + ""
+#
+#
+# print(remove("  Hello\nWorld "))
+
+
+# Файлы
+#
+# f = open("test.txt", "r")
+# print(f)
+# print(*f)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+# f.close()
+# print(f.closed)
+
+
+# f = open("test.txt", "r")
+# # f = open(r"/Users/dilarazujbajdullina/Desktop/python/pythonProject1", "r")
+# print(f.read(3))
+# print(f.read())  # возвращает весь документ
+# f.close()
+
+
+# f = open("test2.txt.rtf", "r")
+# print(f.readline())  # возвращает одну строку
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# f.close()
 
 
 
 
+# f = open("test2.txt.rtf", "r")
+# print(f.readlines(16))
+# print(f.readlines())  # возвращает список строк
+# f.close()
+
+
+
+# f = open("test2.txt.rtf", "r")
+# count = 0
+# for line in f:
+#     print(line, end="")
+#     count += 1
+# f.close()
+# print(count)
+
+# f = open("test2.txt.rtf", "r")
+# print(len(f.readlines()))
+# f.close()
+
+
+
+# f = open("xyz.txt", "w")
+# f.write("Hello\nWorld!\n")
+# f.close()
+
+
+
+# f = open("xyz.txt", "a")
+# f.write("New text.\n")
+# f.close()
+
+
+# f = open("xyz.txt", "a")
+# lines = ['\nThis is line 1', '\nThis is line 2']
+# f.writelines(lines)
+# f.close()
+
+
+# f = open("xyz.txt", "w")
+# lst = [str(i) + " " for i in range(1, 20)]
+# print(lst)
+# # for index in lst:
+# #     f.write(index + "\t")
+# f.writelines(lst)
+# f.close()
+
+
+# f = open("test3.txt", "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл\n")
+# f.close()
+
+
+
+# f = open('test3.txt', 'r')
+# read_file = f.readlines()
+# print(read_file)
+# read_file[1] = "Hello world!\n"
+# print(read_file)
+# f.close()
+#
+# f = open("test3.txt", "w")
+# f.writelines(read_file)
+# f.close()
+
+
+# f = open("test3.txt", "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл\n")
+# f.close()
+
+# f = open("test3.txt", 'r')
+# read_file = f.readlines()
+# pos = int(input("Введите индекс строки для удаления: "))
+# if 0 <= pos < len(read_file):
+#     del_pos = read_file.pop(pos)
+# else:
+#     print("Индекс введен неверно")
+# f.close()
+#
+# f = open("test3.txt", 'w')
+# f.writelines(read_file)
+# f.close()
+
+
+# f = open("test.txt", "r")
+# print(f.read(3))
+# print(f.tell())  # возвращает текущую позицию условного курсора в файле
+# print(f.seek(1))  # перемещает условный курсор в заданную позицию
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+
+
+# f = open("test.txt", "r+")
+# print(f.write("I am learning Python"))
+# print(f.seek(3))
+# print(f.write("-new string-"))
+# print(f.tell())
+# f.close()
+
+# f = open("test2.txt", "a+")
+# # print(f.write("1111 I am learning Python 1111"))
+# print(f.read())
+# f.close()
+
+# with open("test2.txt", 'w+') as f:
+#     print(f.write('01234\n56789'))
+# print(f.closed)
+
+
+# with open("test2.txt", 'r') as f:
+#     for line in f:
+#         print(line[:3])
+
+
+
+
+# s = [-2, 3, 8, -11, -4, 6]
+#
+#
+# def sum(chisla):
+#     if not chisla:
+#         return 0
+#     count = 0
+#     if chisla[0] < 0:
+#             count += 1
+#     return sum(chisla[1:]) + count
+#
+#
+# print(sum(s))
+
+
+
+# file_name = "res.txt"
+# lst = [4.5, 2.8, 3.9, 1.0, 0.3, 4.33, 7.777]
+#
+#
+# def get_line(lt):
+#     lt = map(str, lt)  # ['4.5', '2.8', '3.9', '1.0', '0.3', '4.33', '7.777']
+#     return ' '.join(lt)  # "4.5 2.8 3.9 1.0 0.3 4.33 7.777"
+#
+#
+# with open(file_name, 'w') as f:
+#     f.write(get_line(lst))
+# #     # f.write(str(lst))  # "4.5 2.8 3.9 1.0 0.3 4.33 7.777"
+#
+#
+# with open(file_name, 'r') as f:
+#     st = f.read()
+#
+# print(st)
+# print(type(st))
+#
+# nums = list(map(float, st.split()))
+# print(nums)
+# print(type(nums[0]))
+
+
+# a = 5
+
+
+# if a == 5:
+#     b = 10
+
+# for i in range(12):
+#     b = 10
+
+# def func():
+#     b = 10
+#
+#
+# func()
+# print(b)
+
+
+
+# def longest_worlds(file):
+#     with open(file, 'r') as text:  # encoding="utf-8"
+#         w = text.read().split()
+#         print(w)
+#         max_length = len(max(w, key=len))
+#         print(max_length)
+#         res = [i for i in w if len(i) == max_length]
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# print(longest_worlds('test.txt'))
+
+
+
+
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+#
+# # with open('one.txt', 'w') as f:
+# #     f.write(text)
+#
+#
+# with open('one.txt', 'r') as fr, open('two.txt', 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия -")
+#         fw.write(line)
+
+
+
+# Модуль OS, OS.PATH
+
+import os
+
+import os.path
+
+
+# print(os.getcwd())  # возвращает текущую директорию
+# print(os.listdir())  # список директорий и файлов
+# print(os.listdir(".."))
+#
+# os.mkdir("folder1")  # создает папку
+# os.makedirs("nested1/nested2/nested3")  # создает конечную директорию вмести с промежуточными
+
+# os.rmdir("folder1")  # удаление пустой папки
+# os.rmdir("nested1/nested2/nested3")
+
+# os.remove("xyz1.txt")  # удаление файла
+
+# os.rename("xyz.txt", "new.txt")  # переименование файла и папки
+# os.rename("folder", "new")
+
+# os.rename("two.txt", "nested1/two1.txt")
+# os.renames("test.txt", "nested1/nested3/two.txt")  # переименование файла и папки, перемещает документы,
+# создавая промежуточные директории
+
+
+# for root, dirs, files in os.walk("nested1", topdown=False):
+#     print("Root:", root)
+#     print("\tSubdirs:", dirs)
+#     print("\t\tFiles:", files)
+
+#
+# def remove_empty_dirs(root_tree):
+#     print(f"Удаление пустых директорий в ветви {root_tree}")
+#     print('-' * 50)
+#     for root, dirs, files in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f"Директория {root} удалена.")
+#     print('-' * 50)
+
+
+# remove_empty_dirs("nested1")
+
+# print(os.path.split(r"Users\dilarazujbajdullina\Desktop\python\pythonProject1\nested1\nested2\nested4\text.txt")) #[1]
+
+
+# print(os.path.join('nested4', r'D:\Python317', '317', 'nested1', 'nested2', 'text.txt'))
+
+
+# dirs = [r'Work\F1', r'Work\F2\F21']
+# for d in dirs:
+#     os.makedirs(d)
+
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt', 'f12.txt', 'f13.txt'],
+#     r'Work\F2\F21': ['f211.txt', 'f212.txt']
+# }
+#
+# for dir1, files in files.items():
+#     for file in files:
+#         file_path = os.path.join(dir1, file)
+#         open(file_path, 'w').close()
+#
+# file_with_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
+#
+# for file in file_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f"Текст в файле {file}")
+
+# Work\w.txt
+# Work\F1\f11.txt
+# Work\F1\f12.txt
+# Work\F1\f13.txt
+# Work\F2\F21\f211.txt
+# Work\F2\F21\f212.txt
+
+
+#
+# root = r'nested1'
+# objs = os.listdir(root)
+# print(objs)
+# # print(sorted(objs, reverse=True))
+# objs = list(map(lambda i: os.path.join(root, i), objs))
+# print(objs)
+
+# obj_sort = sorted(objs, key=os.path.isfile, reverse=True)
+# print(obj_sort)
+#
+
+# print(os.path.isfile(r"nested1\nested2\res.txt"))  # возвращает True, если путь является файлом
+# print(os.path.isdir(r"nested1\nested2"))  # возвращает True, если путь является директорией
+
+
+# print(os.path.exists(r'nested1\nested2'))  # проверка на существование пути
+# print(os.path.getsize(r'nested1\nested2'))  # размер документа в байтах
+#
+# root = r'nested1\nested2'
+# if os.path.exists(root):
+#     print(os.path.getsize(root))
+
+# b = os.path.getsize(r'main.py')
+# print(b, "байт")
+# print(b // 1024, "килобайт")
+
+
+# import time
+#
+# path = "main.py"
+# print(os.path.getctime(path))  # возвращает время создания файла
+# print(os.path.getatime(path))  # возвращает время последнего доступа к файлу
+# print(os.path.getmtime(path))  # возвращает время последнего изменения файла (в секундах)
+#
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getctime(path))))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getatime(path))))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getmtime(path))))
+
+
+
+# class Point:
+#     """Класс для предоставления координат на плоскости"""
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# print(p1.x)
+# print(type(p1))
+# print(Point.__doc__)
+# print(Point.__name__)
+# print(dir(Point))
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# p1.x = 10
+# p1.y = 20
+# p1.z = 30
+# print(p1.x, p1.y, p1.z)
+# print(p1.__dict__)
+
+
+# p2 = Point()
+# p2.x = 100
+# # p2.y = 200
+# print(p2.x, p2.y)
+# print(p2.__dict__)
+
+# print(id(Point))
+# print(id(p1))
+# print(id(p2))
+
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#     def set_coord(self, x, y):
+#         self.x = x
+#         self.y = y
+#         print(self.__dict__)
+#
+#
+# p1 = Point()
+# # p1.x = 5
+# # p1.y = 10
+# p1.set_coord(5, 10)
+# # Point.set_coord(p1)
+#
+# p2 = Point()
+# # p2.x = 50
+# # p2.y = 100
+# p2.set_coord(50, 100)
+# Point.set_coord(p2)
+
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\nСтрана: "
+#               f"{self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.address = address
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.name = first_name
+#         self.country = country
+#         self.city = city
+#
+#     def set_name(self, name):  # установить имя
+#         self.name = name
+#
+#     def get_name(self):  # получить имя
+#         return self.name
+#
+#     def set_birthday(self, birthday):
+#         self.birthday = birthday
+#
+#     def get_birthday(self):
+#         return self.birthday
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1A")
+# h1.print_info()
+# h1.set_name("Юлия")
+# print(h1.get_name())
+# h1.set_birthday("23.12.1990")
+# print(h1.get_birthday())
+# h1.print_info()
+
+class Person:
+    skill = 10  # статическое
+    count = 0  # 2
+
+    def __init__(self, name, surname):  # Инициализатор
+        self.name = name  # динамическое
+        self.surname = surname
+        print("Инициализатор")
+        Person.count += 1
+
+    def __del__(self):  # финализатор (деструктор)
+        print("Удаление экземпляра:", self.__class__.__name__)
+
+    def print_info(self):
+        print("Данные сотрудника:", self.name, self.surname)
+
+    def add_skill(self, k):
+        self.skill += k
+        print("Квалификация сотрудника:", self.skill, end="\n\n")
+
+
+p1 = Person("Виктор", "Резник")
+p1.print_info()
+p1.add_skill(3)
+# del p1
+# p1 = 5
+
+p2 = Person("Анна", "Долгих")
+p2.print_info()
+p2.add_skill(2)
+
+p3 = Person("Анна", "Долгих")
+print(p1.count)
+print(p2.count)
+print(Person.count)

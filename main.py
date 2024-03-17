@@ -2200,7 +2200,7 @@ import os.path
 # print(id(p2))
 
 
-
+#
 # class Point:
 #     x = 1
 #     y = 1
@@ -2273,6 +2273,7 @@ import os.path
 #     skill = 10  # статическое
 #     count = 0  # 2
 #
+#
 #     def __init__(self, name, surname):  # Инициализатор
 #         self.name = name  # динамическое
 #         self.surname = surname
@@ -2307,9 +2308,9 @@ import os.path
 
 
 
-import os
-
-root = r'nested1'
-objs = os.listdir(root)
-print(objs)
-print(sorted(objs, reverse=True))
+# import os
+#
+# root = r'nested1'
+# objs = os.listdir(root)
+# print(objs)
+# print(sorted(objs, reverse=True))

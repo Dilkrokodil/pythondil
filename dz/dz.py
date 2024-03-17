@@ -97,10 +97,77 @@ s = [-2, 3, 8, -11, -4, 6]
 # objs = list(map(lambda i: os.path.join(root, i), objs))
 # print(objs)
 
+class Car:
+    def __init__(self, name, god, proizvoditel, moshnost, color, price):
+        self.name = name
+        self.god = god
+        self.proizvoditel = proizvoditel
+        self.moshnost = moshnost
+        self.color = color
+        self.price = price
+
+    def print_info(self):
+
+        print("*"*10, "Данные автомобиля", "*"*10)
+        print("Название модели:", self.name)
+        print("Год выпуска:", self.god)
+        print("Производитель: ", self.proizvoditel)
+        print("Мощность двигателя:", self.moshnost)
+        print("Цвет машины: ", self.color)
+        print("Цена: ", self.price)
+        print("="*40)
+
+    def set_name(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
+    def set_god(self, god):
+        self.god = god
+
+    def get_god(self):
+        return self.god
+
+    def set_proizvoditel(self, proizvoditel):
+        self.proizvoditel = proizvoditel
+
+    def get_proizvoditel(self):
+        return self.proizvoditel
+
+    def set_moshnost(self, moshnost):
+        self.moshnost = moshnost
+
+    def get_moshnost(self):
+        return self.moshnost
+
+    def set_color(self, color):
+        self.color = color
+
+    def get_color(self):
+        return self.color
+
+    def set_price(self, price):
+        self.price = price
+
+    def get_price(self):
+        return self.price
 
 
-
-
+p1 = Car("X7 M50i", "2021", "BMW", "530 л.с.", "white", "10790000")
+p1.print_info()
+p1.set_name("X7 M50i")
+print(p1.get_name())
+p1.set_god("2021")
+print(p1.get_god())
+p1.set_proizvoditel("BMW")
+print(p1.get_proizvoditel())
+p1.set_moshnost("530 л.с.")
+print(p1.get_moshnost())
+p1.set_color("white")
+print(p1.get_color())
+p1.set_price("10790000")
+print(p1.get_price())
 
 
 

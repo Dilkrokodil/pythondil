@@ -171,48 +171,97 @@ s = [-2, 3, 8, -11, -4, 6]
 
 
 
-class Person:
-    def __init__(self, name, old):
-        self.__name = name
-        self.__old = old
 
-    def _check_value(a):
-        if isinstance(a, int) or isinstance(a, str):
-            return True
-        return False
+#
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#
+#     def _check_value(a):
+#         if isinstance(a, int) or isinstance(a, str):
+#             return True
+#         return False
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#     @name.setter
+#     def name(self, name):
+#         if Person._check_value(name):
+#             self.__name = name
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#     @property
+#     def old(self):
+#         return self.__old
+#     @old.setter
+#     def old(self, old):
+#         if Person._check_value(old):
+#             self.__old = old
+#     @old.deleter
+#     def old(self):
+#         del self.__old
+#
+#
+#
+# p = Person("Irina", 26)
+# print(p.__dict__)
+# p.name = "Igor"
+# p.old = 31
+# print(p.name)
+# print(p.old)
+# del p.name
+# print(p.__dict__)
 
-    @property
-    def name(self):
-        return self.__name
-    @name.setter
-    def name(self, name):
-        if Person._check_value(name):
-            self.__name = name
-    @name.deleter
-    def name(self):
-        del self.__name
-    @property
-    def old(self):
-        return self.__old
-    @old.setter
-    def old(self, old):
-        if Person._check_value(old):
-            self.__old = old
-    @old.deleter
-    def old(self):
-        del self.__old
 
 
 
-p = Person("Irina", 26)
-print(p.__dict__)
-p.name = "Igor"
-p.old = 31
-print(p.name)
-print(p.old)
-del p.name
-print(p.__dict__)
+class Ploshad:
 
+    def __init__(self, trosnov, trvysota, kvstorona, prymougst1, prymougst2):
+        self.trosnov = trosnov
+        self.trvysota = trvysota
+        self.kvstorona = kvstorona
+        self.prymougst1 = prymougst1
+        self.prymougst2 = prymougst2
+
+
+    @staticmethod
+    def plosh_tr(osnov, vysota):
+        return 1/2 * osnov * vysota
+
+    @staticmethod
+    def plosh_kv(a):
+        return a**2
+
+    @staticmethod
+    def plosh_pr(a, b):
+        return a * b
+
+
+    def nahogdenye_plosh_tr(self):
+        plosh = Ploshad.plosh_tr(self.trosnov, self.trvysota)
+        print(f"Площадь треугольника через основание и высоту (6, 7): {plosh}")
+
+
+    def nahogdenye_plosh_kv(self):
+        plosh = Ploshad.plosh_kv(self.kvstorona)
+        print(f"Площадь квадрата (7): {plosh}")
+
+
+    def nahogdenye_plosh_pr(self):
+        plosh = Ploshad.plosh_pr(self.prymougst1, self.prymougst2)
+        print(f"Площадь прямоугольника (2,6): {plosh}")
+
+
+
+
+pl = Ploshad(6, 7, 7, 2, 6)
+pl.nahogdenye_plosh_tr()
+pl.nahogdenye_plosh_kv()
+pl.nahogdenye_plosh_pr()
 
 
 

@@ -8739,6 +8739,677 @@ import os.path
 
 
 
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __getitem__(self, item):
+#         if 0 <= item < len(self.marks):
+#             return self.marks[item]
+#         else:
+#             raise IndexError("Неверный индекс")
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, int) or key < 0:
+#             raise TypeError("Индекс должен быть целым положительным числом")
+#
+#         if key >= len(self.marks):  # 10 >= 5
+#             off = key + 1 - len(self.marks)  # 10 + 1 - 5 = 6
+#             self.marks.extend([None] * off)  # [5, 5, 3, 4, 5, None, None, None, None, None, None]
+#
+#         self.marks[key] = value  # [5, 5, 3, 4, 5, None, None, None, None, None, 4]
+#
+#     def __delitem__(self, key):
+#         if not isinstance(key, int):
+#             raise TypeError("Индекс должен быть целым числом")
+#         del self.marks[key]
+#
+#
+# s1 = Student("Сергей", [5, 5, 3, 4, 5])
+# print(s1[2])
+# s1[10] = 4
+# del s1[2]
+# print(s1.marks)
+
+# print([None] * 6)
+# lst = [5, 5, 3, 4, 5]
+# lst.extend([None, None, None, None, None, None])
+# print(lst)
+
+
+
+
+
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}"
+#
+#     @staticmethod
+#     def get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     # def __add__(self, other):
+#     #     if not isinstance(other, Clock):
+#     #         raise ArithmeticError("Правый операнд должен быть типом Clock")
+#     #     return Clock(self.sec + other.sec)
+#     #
+#     # def __eq__(self, other):
+#     #     if not isinstance(other, Clock):
+#     #         raise ArithmeticError("Правый операнд должен быть типом Clock")
+#     #     if self.sec == other.sec:
+#     #         return True
+#     #     return False
+#     #
+#     # def __ne__(self, other):
+#     #     return not self.__eq__(other)
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("Ключ должен быть строкой")
+#
+#         if item == "hour":
+#             return (self.sec // 3600) % 24
+#         elif item == "min":
+#             return (self.sec // 60) % 60
+#         elif item == "sec":
+#             return self.sec % 60
+#         return "Неверный ключ"
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise ValueError("Ключ должен быть строкой")
+#
+#         if not isinstance(value, int):
+#             raise ValueError("Значение должно быть целым числом")
+#
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#
+#         if key == "hour":
+#             self.sec = s + 60 * m + value * 3600
+#         if key == "min":
+#             self.sec = s + 60 * value + h * 3600
+#         if key == "sec":
+#             self.sec = value + 60 * m + h * 3600
+#
+#
+# c1 = Clock(80000)
+# print(c1.get_format_time())
+# c1["hour"] = 11
+# c1["min"] = 24
+# c1["sec"] = 59
+# print(c1["hour"], c1["min"], c1["sec"])
+# print(c1.get_format_time())
+
+# c1 = Clock(100)
+# c2 = Clock(200)
+# # c4 = Clock(300)
+# print(c1.get_format_time())
+# print(c2.get_format_time())
+# # print(c4.get_format_time())
+# # c3 = c1 + c2 + c4
+# # print(c3.get_format_time())
+# # c1 += c2
+# # print(c1.get_format_time())
+# # if c1 == c2:
+# #     print("Время равно")
+# # else:
+# #     print("Время разное")
+#
+# if c1 != c2:
+#     print("Время разное")
+# else:
+#     print("Время равно")
+
+
+
+# from random import choice, randint
+#
+#
+# class Cat:
+#     def __init__(self, name, age, pol):
+#         self.name = name
+#         self.age = age
+#         self.pol = pol
+#
+#     def __str__(self):
+#         if self.pol == "M":
+#             return f"{self.name} is good boy!!!"
+#         elif self.pol == "F":
+#             return f"{self.name} is good girl!!!"
+#         else:
+#             return f"{self.name} is good Kitty!!!"
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age={self.age}, pol='{self.pol}')"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return [Cat("No name", 0, choice(["M", "F"])) for _ in range(randint(1, 5))]  # 0, 5
+#         else:
+#             raise TypeError("Types are not supported!")
+#
+#
+# cat1 = Cat("Tom", 4, "M")
+# cat2 = Cat("Elsa", 5, "F")
+# cat3 = Cat("Murzik", 3, "M")
+# print(cat1)
+# print(cat2)
+# # print(cat3)
+# print(cat1 + cat2)
+
+
+# Полиморфизм
+
+# class Rectangle:
+#     def __init__(self, w, h):
+#         self.w = w
+#         self.h = h
+#
+#     def get_perimetr(self):
+#         return 2 * (self.w + self.h)
+#
+#
+# class Square:
+#     def __init__(self, a):
+#         self.a = a
+#
+#     def get_perimetr(self):
+#         return 4 * self.a
+#
+#
+# class Triangle:
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_perimetr(self):
+#         return self.a + self.b + self.c
+#
+#
+# r1 = Rectangle(1, 2)
+# r2 = Rectangle(3, 4)
+#
+# s1 = Square(10)
+# s2 = Square(20)
+#
+# t1 = Triangle(1, 2, 3)
+# t2 = Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+#
+# for g in shape:
+#     print(g.get_perimetr())
+
+#
+# class Cat():
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def info(self):
+#         return f"Я кот. Меня зовут {self.name}. Мой возраст {self.age}."
+#
+#     def make_sound(self):
+#         return f"{self.name} мяукает"
+#
+#
+# class Dog():
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def info(self):
+#         return f"Я собака. Меня зовут {self.name}. Мой возраст {self.age}."
+#
+#     def make_sound(self):
+#         return f"{self.name} гавкает"
+#
+# c = Cat( "Пушок", 2.5)
+# d = Dog("Мухтар", 4)
+#
+#
+# for a in (c, d):
+#     print(a.info())
+#     print(a.make_sound())
+
+# class Student(Human):
+#     def __init__(self, last_name, first_name, age, speciality, group, rating):
+#         super().__init__(last_name, first_name, age)
+#         self.speciality = speciality
+#         self.group = group
+#         self.rating = rating
+#
+#     def info(self):
+#         super().info()
+#         print(f"{self.speciality} {self.group} {self.rating}", end=" ")
+#
+#
+# class Teacher(Human):
+#     def __init__(self, last_name, first_name, age, speciality, experience):
+#         super().__init__(last_name, first_name, age)
+#         self.speciality = speciality
+#         self.experience = experience
+#
+#     def info(self):
+#         super().info()
+#         print(f"{self.speciality} {self.experience}", end=" ")
+#
+#
+# class Graduate(Student):
+#     def __init__(self, last_name, first_name, age, speciality, group, rating, topic):
+#         super().__init__(last_name, first_name, age, speciality, group, rating)
+#         self.topic = topic
+#
+#     def info(self):
+#         super().info()
+#         print(f"{self.topic}", end=" ")
+#
+#
+# group = [
+#     Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
+#     Student("Загидуллин", "Линар", 32, "РПО", "PD_011", 5),
+#     Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
+#     Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
+#     Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
+#     Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
+# ]
+# for i in group:
+#     i.info()
+
+
+
+
+# Функторы
+
+
+# class Counter:
+#     def __init__(self):
+#         self.__count = 0
+#
+#     def __call__(self, *args, **kwargs):
+#         self.__count += 1
+#         print(self.__count)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+
+
+# def string_strip(chars):
+#     def wrap(string):
+#         if not isinstance(string, str):
+#             raise ValueError("Аргумент должен быть строкой")
+#         return string.strip(chars)
+#
+#     return wrap
+#
+#
+# s1 = string_strip("?:!.; ")
+# print(s1(" :?.Hello World! "))  # Hello World
+
+
+# class StripChars:
+#     def __init__(self, chars):
+#         self.__chars = chars
+#
+#     def __call__(self, string):
+#         if not isinstance(string, str):
+#             raise ValueError("Аргумент должен быть строкой")
+#
+#         return string.strip(self.__chars)
+#
+#     # def __call__(self, *args, **kwargs):
+#     #     if not isinstance(args[0], str):
+#     #         raise ValueError("Аргумент должен быть строкой")
+#     #
+#     #     return args[0].strip(self.__chars)
+#
+#
+# s2 = StripChars("?:!.; ")
+# print(s2(" :?.Hello World! "))
+
+
+
+# Класс как декоратор
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.fn = fn
+#
+#     def __call__(self):
+#         print('Перед вызовом функции')
+#         self.fn()
+#         print('После вызова функции')
+#
+#
+# @MyDecorator
+# def func():
+#     print("Hello World")
+#
+#
+# func()
+
+
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.fn = fn
+#
+#     def __call__(self, x, y):
+#         # print('Перед вызовом функции')
+#         # res = self.fn(x, y)
+#         # print('После вызова функции')
+#         # return res
+#         return f"Перед вызовом функции\n{self.fn(x, y)}\nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
+
+
+# class Power:
+#
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, x, y):
+#         return f"Результат: {self.func(x, y) ** 2}"
+#
+#
+# @Power
+# def func_test(a, b):
+#     return a * b
+#
+#
+# print(func_test(2, 3))
+
+
+# class MyDecorator:
+#     def __init__(self, fn):
+#         self.fn = fn
+#
+#     def __call__(self, *args, **kwargs):
+#         return f"Перед вызовом функции\n{self.fn(*args, **kwargs)}\nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func(a, b):
+#     return a * b
+#
+#
+# @MyDecorator
+# def func1(a, b, c):
+#     return a * b * c
+#
+#
+# print(func(2, 5))
+# print(func1(2, 5, 2))
+# print(func1(2, c=5, b=2))
+
+
+
+ # class MyDecorator:
+#     def __init__(self, arg):
+#         self.arg = arg
+#
+#     def __call__(self, fn):
+#         def wrap(*args, **kwargs):
+#             return f"Перед вызовом функции\n{self.arg} {args[0]} x {args[1]} = {fn(*args, **kwargs)}\nПосле вызова " \
+#                    f"функции"
+#
+#         return wrap
+#
+#
+# @MyDecorator("Произведение:")
+# def func(a, b):
+#     return a * b
+#
+#
+# print(func(2, 5))
+
+
+
+
+
+# class Power:
+#
+#     def __init__(self, power):
+#         self.power = power
+#
+#     def __call__(self, func):
+#         def wrapper(*args, **kwargs):
+#             # print("args:", args)
+#             # print("kwargs:", kwargs)
+#             return f"Результат: {func(*args, **kwargs) ** self.power}\n"
+#         return wrapper
+#
+#
+# @Power(3)
+# def func_test(a, b):
+#     return a / b
+#
+#
+# print(func_test(4, 2))
+# print(func_test(b=4, a=2))
+
+
+# def dec(fn):
+#     def wrap(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#     return wrap
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(f"{self.name} {self.surname}")
+#
+#
+# p1 = Person("Виталий", "Некрасов")
+# p1.info()
+
+
+
+# def decorator(cls):
+#     class Wrapper(cls):
+#         def doubler(self, value):
+#             return value * 2
+#
+#     return Wrapper
+#
+#
+# @decorator
+# class ActualClass:
+#     def __init__(self):
+#         print("Инициализатор ActualClass")
+#
+#     def quad(self, value):
+#         return value * 4
+#
+#
+# obj = ActualClass()
+# print(obj.quad(5))
+# print(obj.doubler(5))
+
+
+
+
+
+# Дескриптор
+
+# class String:
+#     def __init__(self, value=None):
+#         if value:
+#             self.set(value)
+#
+#     def get(self):
+#         return self.__value
+#
+#     def set(self, value):
+#         if not isinstance(value, str):
+#             raise TypeError(f"{value} должно быть строкой")
+#         self.__value = value
+#
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.name = String(name)
+#         self.surname = String(surname)
+#
+#     # @property
+#     # def name(self):
+#     #     return self.__name
+#     #
+#     # @name.setter
+#     # def name(self, value):
+#     #     if not isinstance(value, str):
+#     #         raise TypeError(f"{value} должно быть строкой")
+#     #     self.__name = value
+#     #
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+#     #
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     if not isinstance(value, str):
+#     #         raise TypeError(f"{value} должно быть строкой")
+#     #     self.__surname = value
+#
+#
+# p = Person("Иван", "Петров")
+# print(p.name.get())
+# p.name.set("Игорь")
+# print(p.name.get())
+
+
+
+# Дескриптор (__get__, __set__, __set_name__, __delete__)
+
+# class ValidString:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError(f"{self.__name} должно быть строкой")
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#     name = ValidString()
+#     surname = ValidString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#
+# p = Person("Иван", "Петров")
+# p.surname = "Иванов"
+# # print(p.name)
+# # print(p.surname)
+
+
+# class NonNegative:
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError(f"Значение {self.name} должно быть положительным")
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+#
+# class Order:
+#     price = NonNegative()
+#     quantity = NonNegative()
+#
+#     def __init__(self, name, price, quantity):
+#         self.name = name
+#         self.price = price
+#         self.quantity = quantity
+#
+#     def total(self):
+#         return self.price * self.quantity
+#
+#
+# apple_order = Order('apple', 5, 10)
+# apple_order.quantity = 15
+# print(apple_order.price)
+# print(apple_order.total())
+# print(apple_order.__dict__)
+
+
+class Celoe_chislo:
+    def __set_name__(self, owner, name):
+        self.__name = name
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.name]
+    def __set__(self, instance, value):
+        if value < 0:
+                raise ValueError(f"Значение {self.name} должно быть целым числом")
+        instance.__dict__[self.__name] = value
+
+
+
+class Point3D:
+    x = Celoe_chislo()
+    y = Celoe_chislo()
+    z = Celoe_chislo()
+    def __init__(self, x, y, z):
+        self._x = x
+        self._y = y
+        self._z = z
+
+
+P = Point3D(1, 2, 3)
+print(P.__dict__)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

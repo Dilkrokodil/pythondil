@@ -264,126 +264,149 @@ s = [-2, 3, 8, -11, -4, 6]
 # pl.nahogdenye_plosh_pr()
 #
 
-
-
-class Clock:
-    __Day = 86400
-    def __init__(self, sec: int):
-        if not isinstance(sec, int):
-            raise ValueError("Секунды должны быть целым числом")
-        self.sec = sec % self.__Day
-
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f"{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}"
-
-    @staticmethod
-    def get_form(x):
-        return str(x) if x > 9 else "0" + str(x)
-
-    def __sub__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        return Clock(self.sec - other.sec)
-
-    def __mul__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        return Clock(self.sec * other.sec)
-
-    def __floordiv__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        return Clock(self.sec // other.sec)
-
-    def __mod__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        return Clock(self.sec % other.sec)
-
-    def __lt__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        if self.sec < other.sec:
-            return True
-        return False
-
-    def __le__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        if self.sec <= other.sec:
-            return True
-        return False
-
-    def __gt__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        if self.sec > other.sec:
-            return True
-        return False
-
-    def __ge__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        if self.sec >= other.sec:
-            return True
-        return False
-
-
-
-c1 = Clock(600)
-c2 = Clock(200)
-c7 = Clock(800)
-print(c1.get_format_time())
-print(c2.get_format_time())
-c3 = c1 - c2
-print("c1 - c2: ", c3.get_format_time())
-c4 = c1 * c2
-print("c1 * c2: ", c4.get_format_time())
-c5 = c1 // c2
-print("c1 // c2: ", c5.get_format_time())
-c6 = c1 % c2
-print("c1 % c2: ", c6.get_format_time())
-c1 -= c2
-print("c1 -= c2: ", c1.get_format_time())
-c1 = Clock(600)
-c1 *= c2
-print("c1 *= c2: ", c1.get_format_time())
-c1 = Clock(600)
-c1 //= c2
-print("c1 //= c2: ", c1.get_format_time())
-c1 = Clock(600)
-c1 %= c2
-print("c1 % c2: ", c1.get_format_time())
-c1 = Clock(600)
-if c1 < c7:
-    print("c1 < c7 True")
-else:
-    print("c1 < c7 False")
-
-if c1 <= c7:
-    print("c1 <= c7 True")
-else:
-    print("c1 <= c7 False")
-
-if c1 > c7:
-    print("c1 > c7 True")
-else:
-    print("c1 > c7 False")
-
-if c1 >= c7:
-    print("c1 >= c7 True")
-else:
-    print("c1 >= c7 False")
-
-
-
+#
+#
+# class Clock:
+#     __Day = 86400
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__Day
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}"
+#
+#     @staticmethod
+#     def get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return Clock(self.sec - other.sec)
+#
+#     def __mul__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return Clock(self.sec * other.sec)
+#
+#     def __floordiv__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return Clock(self.sec // other.sec)
+#
+#     def __mod__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return Clock(self.sec % other.sec)
+#
+#     def __lt__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         if self.sec < other.sec:
+#             return True
+#         return False
+#
+#     def __le__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         if self.sec <= other.sec:
+#             return True
+#         return False
+#
+#     def __gt__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         if self.sec > other.sec:
+#             return True
+#         return False
+#
+#     def __ge__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         if self.sec >= other.sec:
+#             return True
+#         return False
+#
+#
+#
+# c1 = Clock(600)
+# c2 = Clock(200)
+# c7 = Clock(800)
+# print(c1.get_format_time())
+# print(c2.get_format_time())
+# c3 = c1 - c2
+# print("c1 - c2: ", c3.get_format_time())
+# c4 = c1 * c2
+# print("c1 * c2: ", c4.get_format_time())
+# c5 = c1 // c2
+# print("c1 // c2: ", c5.get_format_time())
+# c6 = c1 % c2
+# print("c1 % c2: ", c6.get_format_time())
+# c1 -= c2
+# print("c1 -= c2: ", c1.get_format_time())
+# c1 = Clock(600)
+# c1 *= c2
+# print("c1 *= c2: ", c1.get_format_time())
+# c1 = Clock(600)
+# c1 //= c2
+# print("c1 //= c2: ", c1.get_format_time())
+# c1 = Clock(600)
+# c1 %= c2
+# print("c1 % c2: ", c1.get_format_time())
+# c1 = Clock(600)
+# if c1 < c7:
+#     print("c1 < c7 True")
+# else:
+#     print("c1 < c7 False")
+#
+# if c1 <= c7:
+#     print("c1 <= c7 True")
+# else:
+#     print("c1 <= c7 False")
+#
+# if c1 > c7:
+#     print("c1 > c7 True")
+# else:
+#     print("c1 > c7 False")
+#
+# if c1 >= c7:
+#     print("c1 >= c7 True")
+# else:
+#     print("c1 >= c7 False")
 
 
 
 
+
+
+class Celoe_chislo:
+    def __set_name__(self, owner, name):
+        self.__name = name
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.name]
+    def __set__(self, instance, value):
+        if value < 0:
+                raise ValueError(f"Значение {self.name} должно быть целым числом")
+        instance.__dict__[self.__name] = value
+
+
+
+class Point3D:
+    x = Celoe_chislo()
+    y = Celoe_chislo()
+    z = Celoe_chislo()
+    def __init__(self, x, y, z):
+        self._x = x
+        self._y = y
+        self._z = z
+
+
+P = Point3D(1, 2, 3)
+print(P.__dict__)
 
 
 

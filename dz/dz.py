@@ -409,24 +409,68 @@ s = [-2, 3, 8, -11, -4, 6]
 # print(P.__dict__)
 
 
+#
+# class Student:
+#     def __init__(self):
+#         self.name1 = "Roman"
+#         self.name2 = "Vladimir"
+#         self.noyt = self.Nout()
+#
+#     def info(self):
+#         print(f"{self.name1} => {self.noyt.model}, {self.noyt.processor}, {self.noyt.pamyt}")
+#         print(f"{self.name2} => {self.noyt.model}, {self.noyt.processor}, {self.noyt.pamyt}")
+#
+#     class Nout:
+#         def __init__(self):
+#             self.model = "HP"
+#             self.processor = "i7"
+#             self.pamyt = 16
+#
+# student = Student()
+# student.info()
 
-class Student:
-    def __init__(self):
-        self.name1 = "Roman"
-        self.name2 = "Vladimir"
-        self.noyt = self.Nout()
+
+
+class Pair:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
+    def proiz(self):
+        print(f"Произведение: ", self.a * self.b)
+
+    def sum(self):
+        print(f"Сумма: ", self.a + self.b)
+
+    def change(self):
+        self.a = 10
+        self.b = 20
+class RTriangle(Pair):
+    def __init__(self, a, b):
+        super().__init__(a, b)
+        self.g = round((self.a ** 2 + self.b ** 2) ** (1/2), 2)
+
+
+    def gipotinyza(self):
+        print(f"Гипотенуза ABC: ", round((self.a ** 2 + self.b ** 2) ** (1/2), 2))
+
+    def plosh(self):
+        print(f"Площадь АВС: ", self.a * self.b * 1/2)
 
     def info(self):
-        print(f"{self.name1} => {self.noyt.model}, {self.noyt.processor}, {self.noyt.pamyt}")
-        print(f"{self.name2} => {self.noyt.model}, {self.noyt.processor}, {self.noyt.pamyt}")
+        self.gipotinyza()
+        print(f"Прямоугольный треугольник АВС ({self.a}, {self.b}, {self.g})")
+        self.plosh()
 
-    class Nout:
-        def __init__(self):
-            self.model = "HP"
-            self.processor = "i7"
-            self.pamyt = 16
-
-student = Student()
-student.info()
-
-
+pair = Pair(5, 8)
+r = RTriangle(5, 8)
+r.info()
+print()
+pair.sum()
+pair.proiz()
+pair.change()
+r.change()
+print()
+r.info()
+pair.sum()
+pair.proiz()

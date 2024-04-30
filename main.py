@@ -9375,34 +9375,452 @@ import os.path
 # print(apple_order.__dict__)
 
 
-class Celoe_chislo:
-    def __set_name__(self, owner, name):
-        self.__name = name
-    def __get__(self, instance, owner):
-        return instance.__dict__[self.name]
-    def __set__(self, instance, value):
-        if value < 0:
-                raise ValueError(f"Значение {self.name} должно быть целым числом")
-        instance.__dict__[self.__name] = value
+# class Celoe_chislo:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#     def __set__(self, instance, value):
+#         if value < 0:
+#                 raise ValueError(f"Значение {self.name} должно быть целым числом")
+#         instance.__dict__[self.__name] = value
+#
+#
+#
+# class Point3D:
+#     x = Celoe_chislo()
+#     y = Celoe_chislo()
+#     z = Celoe_chislo()
+#     def __init__(self, x, y, z):
+#         self._x = x
+#         self._y = y
+#         self._z = z
+#
+#
+# P = Point3D(1, 2, 3)
+# print(P.__dict__)
 
 
 
-class Point3D:
-    x = Celoe_chislo()
-    y = Celoe_chislo()
-    z = Celoe_chislo()
-    def __init__(self, x, y, z):
-        self._x = x
-        self._y = y
-        self._z = z
+# Метаклассы
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+# class MyList(list):
+#     def get_length(self):
+#         return len(self)
+
+# MyList = type(
+#     'MyList',
+#     (list,),
+#     dict(get_length=lambda self: len(self))
+# )
+#
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(7)
+# print(lst, lst.get_length())  # [5, 7] 2
 
 
-P = Point3D(1, 2, 3)
-print(P.__dict__)
+
+# Создание модулей
+
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+# from geometry import *
+
+from geometry import rect, sq, trian
+
+#
+# def run():
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#
+#     shape = [r1, r2, s1, s2, t1, t2]
+#
+#     for g in shape:
+#         print(g.get_perimetr())
+#
+#
+# if __name__ == '__main__':
+#     run()
+
+
+
+# from car import electrocar
+# from car.electrocar import ElecroCar
+#
+#
+# if __name__ == '__main__':
+#     # e_car = electrocar.ElecroCar("Tesla", "T", 2018, 99000)
+#     e_car = ElecroCar("Tesla", "T", 2018, 99000)
+#     e_car.show_car()
+#     e_car.description_battery()
+
+
+# class Employee:
+#     def __init__(self, kod, name):
+#         self.id = kod
+#         self.name = name
+#
+#
+# class SalaryEmployee(Employee):
+#     """Административные работники, имеют фиксированную зарплату"""
+#
+#     def __init__(self, kod, name, weekly_salary):
+#         super().__init__(kod, name)
+#         self.weekly_salary = weekly_salary
+#
+#     def calculate_payroll(self):
+#         return self.weekly_salary
+#
+#
+# class HourlyEmployee(Employee):
+#     """Сотрудники с почасовой оплатой"""
+#
+#     def __init__(self, kod, name, hours_worked, house_rate):
+#         super().__init__(kod, name)
+#         self.hours_worked = hours_worked
+#         self.house_rate = house_rate
+#
+#     def calculate_payroll(self):
+#         return self.hours_worked * self.house_rate
+#
+#
+# class CommissionEmployee(SalaryEmployee):
+#     """Торговые представители, фиксированная зарплата + комиссия"""
+#
+#     def __init__(self, kod, name, weekly_salary, commission):
+#         super().__init__(kod, name, weekly_salary)
+#         self.commission = commission
+#
+#     def calculate_payroll(self):
+#         fixed = super().calculate_payroll()
+#         return fixed + self.commission
+#
+#
+# class PayrollSystem:
+#     def calculate(self, employees):
+#         print("Расчет заработной платы")
+#         print("=" * 50)
+#         for employee in employees:
+#             print(f"Заработная плата: {employee.id} - {employee.name}")
+#             print(f"- Проверить сумму: {employee.calculate_payroll()}")
+#             print()
+#
+#
+# salary_employee = SalaryEmployee(1, "Валерий Задорожный", 1500)
+# hourly_employee = HourlyEmployee(2, "Илья Кромин", 40, 15)
+# commission_employee = CommissionEmployee(3, "Николай Хорольский", 1000, 250)
+# payroll_system = PayrollSystem()
+# payroll_system.calculate([
+#     salary_employee,
+#     hourly_employee,
+#     commission_employee
+# ])
+
+
+# Упаковка данных
+# сериализация
+# десериализация
+
+# marshal (*.pyc)
+# pickle
+# json
+
+# import pickle
+
+
+# file_name = "basket.txt"
+#
+# shop_list = {
+#     "фрукты": ("яблоки", "манго"),
+#     "овощи": ["морковь"],
+#     "бюджет": 1000
+# }
+#
+# with open(file_name, "wb") as f:
+#     pickle.dump(shop_list, f)
+#
+#
+# with open(file_name, "rb") as f:
+#     shop_list2 = pickle.load(f)
+#
+# print(shop_list2)
+
+
+# class Text:
+#     num = 35
+#     string = "Привет"
+#     lst = [1, 2, 3]
+#     tpl = (22, 23)
+#
+#     def __str__(self):
+#         return f"Число: {Text.num}\nСтрока: {Text.string}\nСписок: {Text.lst}\nКортеж: {Text.tpl}"
+#
+#
+# obj = Text()
+#
+# my_obj = pickle.dumps(obj)
+# print(my_obj)
+#
+# obj2 = pickle.loads(my_obj)
+# print(obj2)
+
+
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# print(item1)
+# item2 = pickle.dumps(item1)
+# print(item2)
+# item3 = pickle.loads(item2)
+# print(item3.__dict__)
+# print(item3)
 
 
 
 
+# import json
+
+# data = {
+#     'name': 'Ольга',
+#     'age': 20,
+#     20: None,
+#     True: 1,
+#     'hobbies': ('running', 'singing'),
+#     'children': ['Alica', 'Bob']
+# }
+#
+# with open('data_file.json', 'w') as f:
+#     json.dump(data, f, indent=4, ensure_ascii=False)
+#
+# with open("data_file.json", 'r') as f:
+#     data1 = json.load(f)
+#
+# print(data1)
+
+# json_string = json.dumps(data, ensure_ascii=False)
+# print(json_string)
+# print(type(json_string))
+# data1 = json.loads(json_string)
+# print(data1)
+# print(type(data1))
+
+
+
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open('persons.json'))  # [{}, {}, {}, {}, {}]
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)  # [{}, {}, {}, {}, {}, {}, {}]
+#     with open("persons.json", "w") as f:
+#         json.dump(data, f, indent=2)  # [{}, {}, {}, {}, {}, {}, {}]
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
+
+
+
+# import json
+#
+#
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __str__(self):
+#         # a = ''
+#         # for i in self.marks:
+#         #     a += str(i) + ", "
+#         # return f"Студент: {self.name} => {a[:-2]}"
+#         a = ", ".join(map(str, self.marks))
+#         return f"Студент: {self.name} => {a}"
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#     def get_file_name(self):
+#         return self.name.lower() + ".json"
+#
+#     def dump_to_json(self):
+#         data = {"name": self.name, "marks": self.marks}
+#         with open(self.get_file_name(), "w") as f:
+#             json.dump(data, f, indent=2)
+#
+#     def load_from_file(self):
+#         with open(self.get_file_name(), "r") as f:
+#             print(json.load(f))
+#
+#
+# class Group:
+#     def __init__(self, students, group):
+#         self.students = students
+#         self.group = group
+#
+#     def __str__(self):
+#         a = "\n".join(map(str, self.students))
+#         return f"Группа: {self.group}\n{a}"
+#
+#     def add_student(self, student):
+#         self.students.append(student)
+#
+#     def remove_student(self, index):
+#         return self.students.pop(index)
+#
+#     @staticmethod
+#     def change_group(gr1, gr2, index):
+#         gr2.add_student(gr1.remove_student(index))
+#
+#     def get_file_name(self):
+#         return self.group.lower().replace(" ", "-") + ".json"
+#
+#     def dump_to_json(self):
+#         data = [
+#             {'name': student.name, "marks": student.marks} for student in self.students
+#         ]
+#         with open(self.get_file_name(), 'w') as f:
+#             json.dump(data, f, indent=2)
+#
+#     def load_from_file(self):
+#         with open(self.get_file_name(), "r") as f:
+#             print(json.load(f))
+#
+#     def add_db(self):
+#         try:
+#             data = json.load(open('db.json'))
+#         except FileNotFoundError:
+#             data = {}
+#         js = [
+#             {student.name: student.marks} for student in self.students
+#         ]
+#         data[self.group] = js
+#         with open("db.json", "w+") as f:
+#             json.dump(data, f, indent=2)
+#         print(f"Группа {self.group} добавлена в файл")
+#
+#     @staticmethod
+#     def load_groups(file):
+#         with open(file, "r") as f:
+#             print(json.load(f))
+#
+# # st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# # print(st1)
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delete_mark(2)
+# # print(st1)
+# # st1.edit_mark(2, 5)
+# # print(st1)
+# # print(st1.average_mark())
+# # st1.dump_to_json()
+# # st1.load_from_file()
+# # st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+# # st2.dump_to_json()
+# # st2.load_from_file()
+# # st2.add_mark(5)
+# # print(st2)
+# # st2.dump_to_json()
+# # st2.load_from_file()
+#
+# st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+# st3 = Student('Birukov', [3, 5, 3, 2, 5, 4])
+# sts1 = [st1, st2]
+# group1 = Group(sts1, "ГК Python")
+# # print(group1)
+# # print()
+# group1.add_student(st3)
+# # print(group1)
+# # print()
+# group1.remove_student(1)
+# print(group1)
+# print()
+# sts2 = [st2]
+# group2 = Group(sts2, "ГК Web")
+# print(group2)
+# Group.change_group(group1, group2, 0)
+# print()
+# print(group1)
+# print()
+# print(group2)
+# # group2.dump_to_json()
+# # group2.load_from_file()
+# # group1.dump_to_json()
+# # group1.load_from_file()
+# group1.add_db()
+# group2.add_db()
+#
+# file_name = "db.json"
+# Group.load_groups(file_name)
 
 
 

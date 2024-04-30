@@ -382,33 +382,51 @@ s = [-2, 3, 8, -11, -4, 6]
 
 
 
+#
+# class Celoe_chislo:
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#     def __set__(self, instance, value):
+#         if value < 0:
+#                 raise ValueError(f"Значение {self.name} должно быть целым числом")
+#         instance.__dict__[self.__name] = value
+#
+#
+#
+# class Point3D:
+#     x = Celoe_chislo()
+#     y = Celoe_chislo()
+#     z = Celoe_chislo()
+#     def __init__(self, x, y, z):
+#         self._x = x
+#         self._y = y
+#         self._z = z
+#
+#
+# P = Point3D(1, 2, 3)
+# print(P.__dict__)
 
-class Celoe_chislo:
-    def __set_name__(self, owner, name):
-        self.__name = name
-    def __get__(self, instance, owner):
-        return instance.__dict__[self.name]
-    def __set__(self, instance, value):
-        if value < 0:
-                raise ValueError(f"Значение {self.name} должно быть целым числом")
-        instance.__dict__[self.__name] = value
 
 
+class Student:
+    def __init__(self):
+        self.name1 = "Roman"
+        self.name2 = "Vladimir"
+        self.noyt = self.Nout()
 
-class Point3D:
-    x = Celoe_chislo()
-    y = Celoe_chislo()
-    z = Celoe_chislo()
-    def __init__(self, x, y, z):
-        self._x = x
-        self._y = y
-        self._z = z
+    def info(self):
+        print(f"{self.name1} => {self.noyt.model}, {self.noyt.processor}, {self.noyt.pamyt}")
+        print(f"{self.name2} => {self.noyt.model}, {self.noyt.processor}, {self.noyt.pamyt}")
 
+    class Nout:
+        def __init__(self):
+            self.model = "HP"
+            self.processor = "i7"
+            self.pamyt = 16
 
-P = Point3D(1, 2, 3)
-print(P.__dict__)
-
-
-
+student = Student()
+student.info()
 
 

@@ -430,47 +430,93 @@ s = [-2, 3, 8, -11, -4, 6]
 # student.info()
 
 
+#
+# class Pair:
+#     def __init__(self, a, b):
+#         self.a = a
+#         self.b = b
+#
+#     def proiz(self):
+#         print(f"Произведение: ", self.a * self.b)
+#
+#     def sum(self):
+#         print(f"Сумма: ", self.a + self.b)
+#
+#     def change(self):
+#         self.a = 10
+#         self.b = 20
+# class RTriangle(Pair):
+#     def __init__(self, a, b):
+#         super().__init__(a, b)
+#         self.g = round((self.a ** 2 + self.b ** 2) ** (1/2), 2)
+#
+#
+#     def gipotinyza(self):
+#         print(f"Гипотенуза ABC: ", round((self.a ** 2 + self.b ** 2) ** (1/2), 2))
+#
+#     def plosh(self):
+#         print(f"Площадь АВС: ", self.a * self.b * 1/2)
+#
+#     def info(self):
+#         self.gipotinyza()
+#         print(f"Прямоугольный треугольник АВС ({self.a}, {self.b}, {self.g})")
+#         self.plosh()
+#
+# pair = Pair(5, 8)
+# r = RTriangle(5, 8)
+# r.info()
+# print()
+# pair.sum()
+# pair.proiz()
+# pair.change()
+# r.change()
+# print()
+# r.info()
+# pair.sum()
+# pair.proiz()
 
-class Pair:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
 
-    def proiz(self):
-        print(f"Произведение: ", self.a * self.b)
-
-    def sum(self):
-        print(f"Сумма: ", self.a + self.b)
-
-    def change(self):
-        self.a = 10
-        self.b = 20
-class RTriangle(Pair):
-    def __init__(self, a, b):
-        super().__init__(a, b)
-        self.g = round((self.a ** 2 + self.b ** 2) ** (1/2), 2)
+import json
+from random import choice
 
 
-    def gipotinyza(self):
-        print(f"Гипотенуза ABC: ", round((self.a ** 2 + self.b ** 2) ** (1/2), 2))
+def gen_person():
+    _id = ''
+    name = ''
+    tel = ''
 
-    def plosh(self):
-        print(f"Площадь АВС: ", self.a * self.b * 1/2)
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
-    def info(self):
-        self.gipotinyza()
-        print(f"Прямоугольный треугольник АВС ({self.a}, {self.b}, {self.g})")
-        self.plosh()
+    while len(_id) != 10:
+        _id += choice(nums)
 
-pair = Pair(5, 8)
-r = RTriangle(5, 8)
-r.info()
-print()
-pair.sum()
-pair.proiz()
-pair.change()
-r.change()
-print()
-r.info()
-pair.sum()
-pair.proiz()
+    while len(name) != 7:
+        name += choice(letters)
+
+    while len(tel) != 10:
+        tel += choice(nums)
+
+    person = {
+        _id: {
+            'name': name,
+            'tel': tel
+        }
+    }
+
+    return person
+
+
+def write_json(person_dict):
+    try:
+        data = json.load(open('persons.json'))
+    except FileNotFoundError:
+        data = {}
+
+    data = data | person_dict
+    with open("persons.json", "w") as f:
+        json.dump(data, f, indent=2)
+
+
+for i in range(5):
+    write_json(gen_person())

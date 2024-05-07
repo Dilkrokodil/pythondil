@@ -9961,9 +9961,9 @@ from geometry import rect, sq, trian
 #     return completed and max_count
 
 
-with open("filter_file.json", "w") as f:
-    filtered = list(filter(keep, todos))
-    json.dump(filtered, f, indent=2)
+# with open("filter_file.json", "w") as f:
+#     filtered = list(filter(keep, todos))
+#     json.dump(filtered, f, indent=2)
 
 
 # import csv

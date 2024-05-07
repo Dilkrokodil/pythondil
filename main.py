@@ -9639,44 +9639,44 @@ from geometry import rect, sq, trian
 
 
 
-import json
-from random import choice
-
-
-def gen_person():
-    name = ''
-    tel = ''
-
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-
-    while len(name) != 7:
-        name += choice(letters)
-
-    while len(tel) != 10:
-        tel += choice(nums)
-
-    person = {
-        'name': name,
-        'tel': tel
-    }
-
-    return person
-
-
-def write_json(person_dict):
-    try:
-        data = json.load(open('persons.json'))  # [{}, {}, {}, {}, {}]
-    except FileNotFoundError:
-        data = []
-
-    data.append(person_dict)  # [{}, {}, {}, {}, {}, {}, {}]
-    with open("persons.json", "w") as f:
-        json.dump(data, f, indent=2)  # [{}, {}, {}, {}, {}, {}, {}]
-
-
-for i in range(5):
-    write_json(gen_person())
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open('persons.json'))  # [{}, {}, {}, {}, {}]
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)  # [{}, {}, {}, {}, {}, {}, {}]
+#     with open("persons.json", "w") as f:
+#         json.dump(data, f, indent=2)  # [{}, {}, {}, {}, {}, {}, {}]
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
 
 
 
@@ -9925,8 +9925,8 @@ for i in range(5):
 # response = requests.get("https://jsonplaceholder.typicode.com/todos")
 # todos = json.loads(response.text)
 #
-
-
+#
+#
 # todos_by_user = {}  # {1: 11, 2: 8, 3: 7, 4: 6, 5: 12, 6: 6, 7: 9, 8: 11, 9: 8, 10: 12}
 #
 # for todo in todos:
@@ -9959,11 +9959,11 @@ for i in range(5):
 #     completed = todo["completed"]
 #     max_count = str(todo["userId"]) in users
 #     return completed and max_count
-#
-#
-# with open("filter_file.json", "w") as f:
-#     filtered = list(filter(keep, todos))
-#     json.dump(filtered, f, indent=2)
+
+
+with open("filter_file.json", "w") as f:
+    filtered = list(filter(keep, todos))
+    json.dump(filtered, f, indent=2)
 
 
 # import csv

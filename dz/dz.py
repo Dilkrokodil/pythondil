@@ -566,16 +566,39 @@ s = [-2, 3, 8, -11, -4, 6]
 
 
 
+# import requests
+# import json
+# import csv
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+#
+# with open("todos.csv", "w") as f:
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(todos[0].keys()))
+#     writer.writeheader()
+#     for d in todos:
+#         writer.writerow(d)
+
+
+
 import requests
-import json
-import csv
+from bs4 import BeautifulSoup
 
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-todos = json.loads(response.text)
+def main():
+    url = "https://www.joomfox.org/subject-themes/news-portal.html"
+    get_data(get_html(url))
 
-with open("todos.csv", "w") as f:
-    writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(todos[0].keys()))
-    writer.writeheader()
-    for d in todos:
-        writer.writerow(d)
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    p1 = soup.find("div", class_="container")
+    plagins = p1.find_all("id=leading-0")
+    print(plagins)
 
+
+def get_html(url):
+    r = requests.get(url)
+    return r.text
+
+
+if __name__ == '__main__':
+    main()

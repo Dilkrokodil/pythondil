@@ -580,25 +580,27 @@ s = [-2, 3, 8, -11, -4, 6]
 #         writer.writerow(d)
 
 
+#
+# import requests
+# from bs4 import BeautifulSoup
+#
+# def main():
+#     url = "https://www.joomfox.org/subject-themes/news-portal.html"
+#     get_data(get_html(url))
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find("div", class_="container")
+#     plagins = p1.find_all("id=leading-0")
+#     print(plagins)
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# if __name__ == '__main__':
+#     main()
 
-import requests
-from bs4 import BeautifulSoup
 
-def main():
-    url = "https://www.joomfox.org/subject-themes/news-portal.html"
-    get_data(get_html(url))
-
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    p1 = soup.find("div", class_="container")
-    plagins = p1.find_all("id=leading-0")
-    print(plagins)
-
-
-def get_html(url):
-    r = requests.get(url)
-    return r.text
-
-
-if __name__ == '__main__':
-    main()

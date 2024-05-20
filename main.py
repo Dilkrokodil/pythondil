@@ -10217,3 +10217,199 @@ import csv
 
 
 
+
+# # Сокеты:
+# # Серверный
+# # Клиентский
+#
+# import socket
+# from view import index, blog
+#
+#
+# URLS = {
+#     '/': index,
+#     '/blog': blog
+# }
+#
+#
+# def parser_request(request):
+#     parsed = request.split()
+#     method = parsed[0]
+#     url = parsed[1]
+#     return method, url
+#
+#
+# def generate_headers(method, url):
+#     if method != 'GET':
+#         return 'HTTP/1.1 405 Method Not Allowed!\n\n', 405
+#     if url not in URLS:
+#         return 'HTTP/1.1 404 Page Not Found!\n\n', 404
+#     return 'HTTP/1.1 200 OK!\n\n', 200
+#
+#
+# def generate_content(code, url):
+#     if code == 404:
+#         return '<h1>404</h1><h3>Page Not Found!</h3>'
+#     if code == 405:
+#         return '<h1>405</h1><h3>Method Not Allowed!</h3>'
+#     return URLS[url]()
+#
+#
+# def generate_response(request):
+#     method, url = parser_request(request)
+#     headers, code = generate_headers(method, url)
+#     body = generate_content(code, url)
+#     return (headers + body).encode()
+#
+# def run():
+#     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     server_socket.bind(('127.0.0.1', 5000))  # 127.0.0.1:5000
+#     server_socket.listen()
+#
+#     while True:
+#         client_socket, addr = server_socket.accept()
+#         request = client_socket.recv(1024)
+#         print(f"Клиент: {addr} => \n{request.decode('utf-8')}\n")
+#
+#         response = generate_response(request.decode())
+#         client_socket.sendall(response)
+#         client_socket.close()
+#
+#
+# if __name__ == "__main__":
+#     run()
+
+
+
+
+import sqlite3
+
+
+# con = sqlite3.connect("profile.db")
+# cur = con.cursor()
+# cur.execute("")
+# con.close()
+
+
+# with sqlite3.connect("profile.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     summa REAL,
+#     date BLOB)""")
+#     cur.execute("DROP TABLE users")
+
+
+
+#SELECT [ALL|DISTINCT] {* | STOLBEC_1 [, STOLBEC_N]}
+# FROM таблица_1 [, таблица_n]
+#WHERE условие
+    # =, ==, !=, <>, <, <=, >, >=
+#AND , OR
+#[NOT] BETWEEN нач_значение AND конеч_знач
+#[NOT] LIKE шаблон_строки:
+# % - любое кол-во символов
+# _ - один любой символ
+#IS NULL \ IS [NOT] NULL
+# [NOT] GLOB регулярные_выражениzя:
+#       * - люб кол-во символов
+#       ? - элемент может быть может не быть
+#       . - один любой элемент
+#       [символы] - соответ олному из заданных символов
+#       [нач_знач-кон_знач] - одно из знач из заданного диапозона
+#        [^...] - все кроме заданных символов
+# [NOT] IN (набор значений \ выоажение)
+# ORDER BY название столбца или номер столбца[ASC / DESC]
+
+
+
+
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS person(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     phone BLOB NOT NULL DEFAULT +79654564321,
+#     age INTEGER CHECK(age > 0 AND age < 100),
+#     email TEXT UNIQUE
+#     )""")
+
+
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     DROP TABLE person_table
+#     """)
+
+
+    # cur.execute("""
+    #         ALTER TABLE person_table
+    #         DROP COLUMN home_adress;
+    #         """)
+
+
+
+    # cur.execute("""
+    #     ALTER TABLE person_table
+    #     RENAME COLUMN address TO home_adress;
+    #     """)
+
+
+
+    # cur.execute("""
+    # ALTER TABLE person_table
+    # ADD COLUMN address TEXT;
+    # """)
+
+
+
+
+    # cur.execute("""
+    # ALTER TABLE person
+    # RENAME TO person_table;
+    # """)
+
+
+#INSERT - добавл строки в ьазу данных
+# UPDATE - изменение строки в сущ БД
+# DELETE - удал строки в БД
+
+# INSERT INTO имя_табл [(наз столбцлв)]
+# VALUES (набор значений)
+
+# INSERT INTO имя_табл [(наз столбцлв)]
+# SELECT список_стольцов
+# FROM Имя_табл
+# WHERE условие
+
+
+# UPDATE имя _ табл
+# SET столбец1 = знач1, сталбN= значN
+# WHERE условие
+
+
+# DELETE FROM имя_табл
+# WHERE удаление
+
+
+
+# SELECT *
+# FROM Ware
+# ORDER BY Price DESC
+# LIMIT 5 OFFSET 2 (смещение на 2)
+# LIMIT кол-во строк OFFSET смещение
+# LIMIT [смещение], [кол-во строк]   LIMIT 2, 5
+
+
+
+with sqlite3.connect("db_4.db") as con:
+    cur = con.cursor()
+    cur.execute("""
+    SELECT *
+    FROM Ware
+    ORDER BY Price DESC
+    --LIMIT 5 OFFSET 2
+    LIMIT 2, 5
+    """)

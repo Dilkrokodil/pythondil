@@ -604,3 +604,32 @@ s = [-2, 3, 8, -11, -4, 6]
 #     main()
 
 
+# dz.
+
+from jinja2 import Template
+
+menus = [
+    {"href": "/index", "menu": "Главная"},
+    {"href": "/news", "menu": "Новости"},
+    {"href": "/about", "menu": "О компании"},
+    {"href": "/shop", "menu": "Магазин"},
+    {"href": "/contacts", "menu": "Контакты"}
+]
+
+link = """
+<ul>
+    {% for c in menus %}
+        {% if c.menu == "Главная" -%}
+            <li><a href="{{ c['href'] }}" class = "active">{{ c['menu'] }}</a></li>
+        {% else -%}
+            <li><a href="{{ c['href'] }}">{{ c['menu'] }}</a></li>
+        {% endif -%}
+
+    {% endfor %}
+</ul>
+"""
+
+tm = Template(link)
+msg = tm.render(menus=menus)
+
+print(msg)

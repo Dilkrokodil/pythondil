@@ -10690,32 +10690,105 @@ from jinja2 import Template
 
 
 
-# dz.
+# # dz.
+#
+# from jinja2 import Template
+#
+# menus = [
+#     {"href": "/index", "menu": "Главная"},
+#     {"href": "/news", "menu": "Новости"},
+#     {"href": "/about", "menu": "О компании"},
+#     {"href": "/shop", "menu": "Магазин"},
+#     {"href": "/contacts", "menu": "Контакты"}
+# ]
+#
+# link = """
+# <ul>
+#     {% for c in menus %}
+#         {% if c.menu == "Главная" -%}
+#             <li><a href="{{ c['href'] }}" class = "active">{{ c['menu'] }}</a></li>
+#         {% else -%}
+#             <li><a href="{{ c['href'] }}">{{ c['menu'] }}</a></li>
+#         {% endif -%}
+#
+#     {% endfor %}
+# </ul>
+# """
+#
+# tm = Template(link)
+# msg = tm.render(menus=menus)
+#
+# print(msg)
+
+
+
 
 from jinja2 import Template
 
-menus = [
-    {"href": "/index", "menu": "Главная"},
-    {"href": "/news", "menu": "Новости"},
-    {"href": "/about", "menu": "О компании"},
-    {"href": "/shop", "menu": "Магазин"},
-    {"href": "/contacts", "menu": "Контакты"}
-]
+# cars = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skoda', 'price': 17300},
+#     {'model': 'Renault', 'price': 44300},
+#     {'model': 'Wolksvagen', 'price': 21300}
+# ]
+#
+# # tp1 = "{{ (cs | min(attribute='price')).model }}"
+# # tp1 = "{{ cs | random }}"
+# tp1 = "{{ cs | replace('model', 'brand') }}"
+# tm = Template(tp1)
+# msg = tm.render(cs=cars)
+#
+# print(msg)
+# print(cars)
 
-link = """
-<ul>
-    {% for c in menus %}
-        {% if c.menu == "Главная" -%}
-            <li><a href="{{ c['href'] }}" class = "active">{{ c['menu'] }}</a></li>
-        {% else -%}
-            <li><a href="{{ c['href'] }}">{{ c['menu'] }}</a></li>
-        {% endif -%}
-        
-    {% endfor %}
-</ul>
-"""
 
-tm = Template(link)
-msg = tm.render(menus=menus)
+
+
+
+html = '''
+{% macro get_input(name, value='', type='text', size=20) %}
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+{% endmacro %}
+
+<p>{{ get_input('username') }}</p>
+<p>{{ get_input('email') }}</p>
+<p>{{ get_input('password', type='password') }}</p>
+'''
+
+tm = Template(html)
+msg = tm.render()
 
 print(msg)
+
+
+
+
+from jinja2 import Environment, FileSystemLoader
+#
+# persons = [
+#     {"name": "Алексей", "year": 18, "weight": 78.5},
+#     {"name": "Никита", "year": 28, "weight": 82.3},
+#     {"name": "Виталий", "year": 33, "weight": 94.0}
+# ]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('main.html')
+# msg = tm.render(users=persons, title="About Jinja")
+
+# print(msg)
+
+
+# from jinja2 import Environment, FileSystemLoader
+#
+# subs = ["Культура", "Наука", "Политика", "Спорт"]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('about.html')
+# msg = tm.render(list_table=subs)
+#
+# print(msg)
+

@@ -605,31 +605,66 @@ s = [-2, 3, 8, -11, -4, 6]
 
 
 # dz.
+#
+# from jinja2 import Template
+#
+# menus = [
+#     {"href": "/index", "menu": "Главная"},
+#     {"href": "/news", "menu": "Новости"},
+#     {"href": "/about", "menu": "О компании"},
+#     {"href": "/shop", "menu": "Магазин"},
+#     {"href": "/contacts", "menu": "Контакты"}
+# ]
+#
+# link = """
+# <ul>
+#     {% for c in menus %}
+#         {% if c.menu == "Главная" -%}
+#             <li><a href="{{ c['href'] }}" class = "active">{{ c['menu'] }}</a></li>
+#         {% else -%}
+#             <li><a href="{{ c['href'] }}">{{ c['menu'] }}</a></li>
+#         {% endif -%}
+#
+#     {% endfor %}
+# </ul>
+# """
+#
+# tm = Template(link)
+# msg = tm.render(menus=menus)
+#
+# print(msg)
+
+
+
 
 from jinja2 import Template
 
-menus = [
-    {"href": "/index", "menu": "Главная"},
-    {"href": "/news", "menu": "Новости"},
-    {"href": "/about", "menu": "О компании"},
-    {"href": "/shop", "menu": "Магазин"},
-    {"href": "/contacts", "menu": "Контакты"}
-]
 
-link = """
-<ul>
-    {% for c in menus %}
-        {% if c.menu == "Главная" -%}
-            <li><a href="{{ c['href'] }}" class = "active">{{ c['menu'] }}</a></li>
-        {% else -%}
-            <li><a href="{{ c['href'] }}">{{ c['menu'] }}</a></li>
-        {% endif -%}
+html = """
+{%- macro get_input(type='text', name='', placeholder='') -%}
+    <input type="{{type}}" name="{{name}}"  placeholder="{{placeholder}}">
+{%- endmacro -%}
 
-    {% endfor %}
-</ul>
+<p>{{get_input(name='firstname', placeholder='Имя')}}</p>
+<p>{{get_input(name='lastname', placeholder='Фамилия')}}</p>
+<p>{{get_input(name='address', placeholder='Адрес')}}</p>
+<p>{{get_input(type='tel', name='phone', placeholder='Телефон')}}</p>
+<p>{{get_input(type='email', name='email', placeholder='Почта')}}</p>
 """
 
-tm = Template(link)
-msg = tm.render(menus=menus)
+tm = Template(html)
+msg = tm.render()
 
 print(msg)
+
+
+
+
+
+
+
+
+
+
+
+

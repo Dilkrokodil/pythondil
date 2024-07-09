@@ -1,0 +1,195 @@
+1.	Выведите список студентов физико-математического факультета.
+SELECT s.FIO
+FROM Student s, G g, Kafedra k
+WHERE k.Kafedra = g.Kafedra AND s."Group" = g."Group" AND k.Decanat = "”изико-математический"
+
+SELECT FIO
+FROM STUDENT 
+WHERE [GROUP] IN
+    (SELECT [GROUP]
+    FROM G
+    WHERE Kafedra IN
+        (SELECT Kafedra
+        FROM Kafedra
+        WHERE Decanat = "”изико-математический"
+        )
+    )
+
+2.	Студенты какой кафедры и факультета сдавали социологию.
+
+SELECT Kafedra, Decanat
+FROM  Kafedra
+WHERE Kafedra IN
+    (SELECT Kafedra
+    FROM G
+    WHERE [Group] IN
+        (SELECT [Group]
+        FROM Student
+        WHERE ID_St IN
+            (SELECT ID_St
+            FROM Exzamen
+            WHERE  Predmet = "‘оциологиЯ"
+            )
+        )
+    
+
+3.	Выведите кафедры, список студентов, список студентов в алфавитном порядке.
+SELECT s.FIO, 
+    (SELECT g.Kafedra
+    FROM G g
+    WHERE s."Group" = g."Group") AS "Kafedra"
+FROM Student s
+ORDER BY s.FIO
+
+4.	Вывести номера зачеток только студентов физико-технического факультета.
+SELECT N_Z 
+FROM Zachetki
+WHERE Id_Studenta IN
+    (SELECT Id_St
+    FROM Exzamen
+    WHERE Id_St IN
+        (SELECT Id_St 
+        FROM Student
+        WHERE [Group] IN
+            (SELECT [Group] 
+            FROM G
+            WHERE Kafedra IN
+                (SELECT Kafedra 
+                FROM Kafedra
+                WHERE Decanat = "”изико-технический"
+                )
+            )
+        )
+    )
+
+5.	Выведите студентов физико-технического факультета сдавших иностранный язык на 5.
+
+SELECT FIO 
+FROM Student 
+WHERE ID_St IN
+    (SELECT ID_St
+    FROM Exzamen 
+    WHERE Predmet LIKE "€ностр. Язык" AND Ball = 5
+    ) AND "Group" IN
+        (SELECT "Group"
+        FROM G
+        WHERE Kafedra IN
+            (SELECT Kafedra
+            FROM Kafedra
+            WHERE Decanat LIKE "”изико-технический"
+            )
+        )
+
+
+6.	Подсчитать сколько различных предметов сдавалось в сессию.
+
+7.	Напишите запрос, который выводит средний балл по экзаменам Васильевой.
+SELECT AVG(Ball)
+FROM Exzamen
+WHERE Id_St IN
+    (SELECT Id_St
+    FROM Student
+    WHERE FIO = "‚асильева Ћльга ‘тепановна"
+    )
+
+8.	Определите сколько человек учится на каждой специальности.
+SELECT COUNT(Id_St), Special
+FROM Student
+GROUP BY Special
+
+9.	Напишите запрос, который покажет все группы физико-технического факультета.
+SELECT [Group]
+FROM G
+WHERE Kafedra IN
+    (SELECT Kafedra
+    FROM Kafedra
+    WHERE Decanat = "”изико-технический"
+    )
+
+10.	Вывести список фамилий студентов получивших 5 баллов по дифференциальным уравнениям.
+SELECT FIO
+FROM Student
+WHERE Id_St IN
+    (SELECT Id_St
+    FROM Exzamen
+    WHERE Predmet = "„ифференциальные уравнениЯ" AND Ball = 5
+    )
+
+11.	Напишите запрос, который покажет,  сколько экзаменов  сдавал Шутов.
+WHERE Id_ST IN
+    (SELECT Id_St
+    FROM Student
+    WHERE FIO = "утов Ђнатолий Ђлександрович"
+    )
+
+12.	Выведите название кафедры студентов, не сдавших хотя бы один экзамен.
+SELECT Kafedra
+FROM Kafedra
+WHERE Kafedra IN
+    (SELECT Kafedra
+    FROM G
+    WHERE [Group] IN
+        (SELECT [Group]
+        FROM Student
+        WHERE Id_St IN
+            (SELECT Id_St
+            FROM Exzamen
+            WHERE Ball IS NULL
+            )
+        )
+    )
+
+13.	Подсчитать количество кафедр на каждом факультете.
+SELECT DISTINCT(Decanat), COUNT()
+FROM Kafedra
+GROUP BY Decanat
+
+14.	Подсчитать количество пятерок на физико-математическом факультете
+SELECT COUNT() 
+FROM Exzamen
+WHERE Ball = 5 AND Id_St IN
+(
+    SELECT ID_St
+    FROM Student
+    WHERE "Group" IN 
+    (SELECT "Group"
+    FROM G
+    WHERE Kafedra IN
+        (SELECT Kafedra
+        FROM Kafedra
+        WHERE Decanat LIKE "”изико-математический"
+        )
+    )
+)
+
+
+15.	Определите номера зачетных книжек группы ФТ151
+15.	Ћпределите номера зачетных книжек группы ”’151
+
+SELECT N_Z
+FROM Zachetki
+WHERE Id_Studenta IN
+(SELECT Id_St
+FROM Exzamen
+WHERE Id_St IN
+    (SELECT ID_St
+    FROM Student
+    WHERE "Group" LIKE "”’151"
+    )
+)
+
+
+16.	Выведите перечень специальностей физико-математического факультета.
+SELECT DISTINCT(Special)
+FROM Student
+WHERE "Group" IN
+(SELECT "Group"
+FROM G
+WHERE Kafedra IN
+    (SELECT Kafedra
+    FROM Kafedra
+    WHERE Decanat LIKE "”изико-математический"
+    )
+)
+
+

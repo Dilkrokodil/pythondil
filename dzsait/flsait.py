@@ -33,7 +33,7 @@ def contact():
 
 @app.route("/menurest")
 def menurest():
-    return render_template('menurest.html', title = "Меню", menu=menu)
+    return render_template('menu.html', title = "Меню", menu=menu)
 
 @app.errorhandler(404)
 def page_not_found(error):

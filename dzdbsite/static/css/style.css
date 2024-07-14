@@ -1,0 +1,110 @@
+body{
+    background: lightyellow;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.menu{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background: rgb(17, 89, 140);
+    padding: 20px;
+    margin-top: 0;
+}
+.content{
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+.flash{
+    padding: 10px;
+}
+.flash.success{
+    border: 1px solid #21DB56;
+    background: #AEFFC5;
+}
+.flash.error{
+    border: 1px solid #FF4343;
+    background: #FF9C9C;
+}
+
+.menu a{
+    font-weight: bold;
+    color: rgb(246, 246, 246);
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+.content h1{
+    text-align: center;
+    color: rgb(17, 89, 140);
+}
+.content ul{
+    margin: 50px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #FFF;
+    border: 1px solid blue;
+}
+.content li{
+    border-radius: 5px;
+    border: 1px solid #DEDEDE;
+    
+    display: flex;
+    flex-direction: column;
+}
+p>a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+
+
+p.title{
+    margin: 0;
+    font-weight: bold;
+    background: rgb(17, 89, 140);
+}
+
+.buy{
+    padding: 10px 20px;
+    border: 1px solid rgb(17, 89, 140);
+    background-color: rgb(17, 89, 140);
+    text-align: center;
+    color: #FFF;
+}
+.price{
+    padding: 10px 20px;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    
+}
+p.title a{
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+p.title:hover{
+    background: rgb(0, 89, 255);
+}
+
+.annonce{
+    margin-top: -1px;
+    margin-bottom: 40px;
+    background: #FFF;
+    padding: 10px 20px 20px;
+}
+
+
